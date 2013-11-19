@@ -37,6 +37,14 @@
         <name>echocat</name>
     </organization>
 
+    <developers>
+        <developer>
+            <id>gregor.noczinski</id>
+            <name>Gregor Noczinski</name>
+            <email>gregor@noczinski.eu</email>
+        </developer>
+    </developers>
+
     <properties>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ssZ</maven.build.timestamp.format>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -273,6 +281,29 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>sign</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
     <issueManagement>
         <system>GitHub</system>
